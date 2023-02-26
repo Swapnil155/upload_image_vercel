@@ -13,9 +13,9 @@ app.use(express.static('public'))
 const UPLOAD_DIR = 'public/uploads'
 
 // Define the storage engine for multer
-const storage = multer.memoryStorage({
+const storage = multer.diskStorage({
     destination: (req, file, callback) => {
-      callback(null, '')
+      callback(null, UPLOAD_DIR)
     },
     filename: (req, file, callback) => {
       const filename = `${file.fieldname}-${Date.now()}${path.extname(file.originalname)}`
@@ -49,7 +49,7 @@ const storage = multer.memoryStorage({
       const fileUrl = `${process.env.VERCEL_URL}/${UPLOAD_DIR}/${file.filename}`
   
       // Return the URL of the uploaded file
-      res.status(200).json({ url: fileUrl })
+      res.status(200).json({ url: fileUrl, file :  file })
     } catch (error) {
       console.error(error)
       res.status(500).json({ message: 'Error uploading file' })
