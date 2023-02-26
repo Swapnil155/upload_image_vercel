@@ -11,7 +11,7 @@ app.use(json())
 app.use(express.static('public'))
 
 // Define the upload directory
-const UPLOAD_DIR = '/tmp'
+const UPLOAD_DIR = path.join(__dirname, 'public/uploads')
 
 // Define the storage engine for multer
 const storage = multer.diskStorage({
