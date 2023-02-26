@@ -13,5 +13,5 @@
             "dest": "/app.js"
         }
     ],
-    "public": "true"
+    "public": true
 }
