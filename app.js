@@ -3,6 +3,7 @@ const express = require('express')
 const multer = require('multer')
 const path = require('path')
 const app = express()
+const fs =  require('fs')
 
 
 app.use(json())
@@ -15,6 +16,9 @@ const UPLOAD_DIR = 'tmp'
 // Define the storage engine for multer
 const storage = multer.diskStorage({
     destination: (req, file, callback) => {
+        if (!fs.existsSync(UPLOAD_DIR)) {
+            fs.mkdirSync(UPLOAD_DIR);
+          }
       callback(null, UPLOAD_DIR)
     },
     filename: (req, file, callback) => {
