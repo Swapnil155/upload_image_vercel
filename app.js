@@ -11,14 +11,12 @@ app.use(json())
 app.use(express.static('public'))
 
 // Define the upload directory
-const UPLOAD_DIR = 'tmp'
+const UPLOAD_DIR = '/tmp'
 
 // Define the storage engine for multer
 const storage = multer.diskStorage({
     destination: (req, file, callback) => {
-        if (!fs.existsSync(UPLOAD_DIR)) {
-            fs.mkdirSync(UPLOAD_DIR);
-          }
+        
       callback(null, UPLOAD_DIR)
     },
     filename: (req, file, callback) => {
