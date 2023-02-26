@@ -10,7 +10,7 @@ app.use(json())
 app.use(express.static('public'))
 
 // Define the upload directory
-const UPLOAD_DIR = 'public/uploads'
+const UPLOAD_DIR = 'tmp'
 
 // Define the storage engine for multer
 const storage = multer.diskStorage({
