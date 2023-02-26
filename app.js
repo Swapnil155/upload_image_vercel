@@ -13,9 +13,9 @@ app.use(express.static('public'))
 const UPLOAD_DIR = 'public/uploads'
 
 // Define the storage engine for multer
-const storage = multer.diskStorage({
+const storage = multer.memoryStorage({
     destination: (req, file, callback) => {
-      callback(null, UPLOAD_DIR)
+      callback(null, '')
     },
     filename: (req, file, callback) => {
       const filename = `${file.fieldname}-${Date.now()}${path.extname(file.originalname)}`
