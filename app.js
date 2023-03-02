@@ -48,7 +48,7 @@ app.post('/upload', upload.single('file'), (req, res) => {
     const file = req.file
 
     // Construct the URL of the uploaded file
-    const fileUrl = `${process.env.VERCEL_URL}/${UPLOAD_DIR}/${file.filename}`
+    const fileUrl = `${process.env.VERCEL_URL}/${UPLOAD_DIR}/${file.originalname}`
 
     // Return the URL of the uploaded file
     res.status(200).json({ url: fileUrl, file: file })
