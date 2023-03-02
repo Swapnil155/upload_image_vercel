@@ -7,6 +7,11 @@
             "use": "@vercel/node"
         }
     ],
+    "files": [
+        "uploads/**/*",
+        "api/**/*",
+        "public/**/*"
+    ],
     "routes": [
         {
             "src": "/(.*)",
