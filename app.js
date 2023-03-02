@@ -8,7 +8,7 @@ const fs =  require('fs')
 
 app.use(json())
 
-app.use(express.static('public'))
+app.use(express.static(path.join(__dirname,'public')))
 
 // Define the upload directory
 const UPLOAD_DIR = 'uploads'
