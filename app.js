@@ -8,7 +8,7 @@ const fs = require('fs')
 
 app.use(json())
 
-app.use(express.static(path.join(__dirname, 'public')))
+app.use(express.static(path.join(__dirname, 'uploads')))
 
 // Define the upload directory
 const UPLOAD_DIR = 'uploads'
@@ -17,7 +17,7 @@ const UPLOAD_DIR = 'uploads'
 const storage = multer.diskStorage({
   destination: (req, file, callback) => {
 
-    callback(null, UPLOAD_DIR)
+    callback(null, path.join(__dirname, 'uploads'))
   },
   filename: (req, file, callback) => {
     const filename = `${file.fieldname}-${Date.now()}${path.extname(file.originalname)}`
