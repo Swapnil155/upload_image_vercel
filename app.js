@@ -19,6 +19,7 @@ const storage = multer.diskStorage({
   destination: (req, file, callback) => {
 
     callback(null, path.join(__dirname, UPLOAD_DIR))
+    console.log(path.join(__dirname, UPLOAD_DIR))
   },
   filename: (req, file, callback) => {
     const filename = `${file.fieldname}-${Date.now()}${path.extname(file.originalname)}`
