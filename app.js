@@ -54,7 +54,8 @@ const storage = multer.diskStorage({
       res.status(200).json({ url: fileUrl, file :  file })
     } catch (error) {
       console.error(error)
-      res.status(500).json({ message: 'Error uploading file' })
+      res.status(500).json({ message: 'Error uploading file',
+    error : error.message  })
     }
   })
   
