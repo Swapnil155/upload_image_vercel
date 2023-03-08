@@ -18,6 +18,11 @@ app.use(express.static(path.join(__dirname, UPLOAD_DIR)))
 const storage = multer.diskStorage({
   destination: (req, file, callback) => {
 
+    if (UPLOAD_DIR) {
+      fs.readFileSync(UPLOAD_DIR)
+    }else{
+      fs.writeFileSync(UPLOAD_DIR)
+    }
     callback(null, path.join(__dirname, UPLOAD_DIR))
     console.log(path.join(__dirname, UPLOAD_DIR))
   },
