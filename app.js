@@ -15,7 +15,7 @@ app.use(express.static(path.join(__dirname, UPLOAD_DIR)));
 // Define the storage engine for multer
 const storage = multer.diskStorage({
   destination: (req, file, callback) => {
-    if (UPLOAD_DIR) {
+    if (path.join(__dirname, UPLOAD_DIR)) {
       fs.readFileSync(path.join(__dirname, UPLOAD_DIR), (err) => {
         if (err) {
           return res.status(500).json({
